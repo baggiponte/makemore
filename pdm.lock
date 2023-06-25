@@ -503,6 +503,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "more-itertools"
+version = "9.1.0"
+requires_python = ">=3.7"
+summary = "More routines for operating on iterables, beyond itertools"
+
+[[package]]
 name = "mpmath"
 version = "1.3.0"
 summary = "Python library for arbitrary-precision floating-point arithmetic"
@@ -971,7 +977,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "docs", "ide", "precommit", "release", "test"]
-content_hash = "sha256:41a5e080b6372a368004660314f7e831f2c81d8cd4102f115743352e56983b5c"
+content_hash = "sha256:cb7bf4b63c1829200e18e69aa11a3b7218d4a4c35da435ee180429d973f2470a"
 
 [metadata.files]
 "appnope 0.1.3" = [
@@ -1461,6 +1467,10 @@ content_hash = "sha256:41a5e080b6372a368004660314f7e831f2c81d8cd4102f115743352e5
 "mkdocstrings-python 1.1.2" = [
     {url = "https://files.pythonhosted.org/packages/4c/81/8c1de2573c4fa5fff7fc20eba1dad2892f43ed22ba145b595243e375c274/mkdocstrings_python-1.1.2-py3-none-any.whl", hash = "sha256:c2b652a850fec8e85034a9cdb3b45f8ad1a558686edc20ed1f40b4e17e62070f"},
     {url = "https://files.pythonhosted.org/packages/7b/22/eaa1ccd8aaeac72953a780f4b6c82650475d241dd953582706db547db004/mkdocstrings_python-1.1.2.tar.gz", hash = "sha256:f28bdcacb9bcdb44b6942a5642c1ea8b36870614d33e29e3c923e204a8d8ed61"},
+]
+"more-itertools 9.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/2e/d0/bea165535891bd1dcb5152263603e902c0ec1f4c9a2e152cc4adff6b3a38/more-itertools-9.1.0.tar.gz", hash = "sha256:cabaa341ad0389ea83c17a94566a53ae4c9d07349861ecb14dc6d0345cf9ac5d"},
+    {url = "https://files.pythonhosted.org/packages/85/01/e2678ee4e0d7eed4fd6be9e5b043fff9d22d245d06c8c91def8ced664189/more_itertools-9.1.0-py3-none-any.whl", hash = "sha256:d2bc7f02446e86a68911e58ded76d6561eea00cddfb2a91e7019bbb586c799f3"},
 ]
 "mpmath 1.3.0" = [
     {url = "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"},
