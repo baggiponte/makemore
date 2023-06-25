@@ -1,0 +1,23 @@
+{
+  "template": "git@github.com:baggiponte/chef",
+  "commit": "16522b77b12002f10457ffcce88fee392a0d16ee",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "Luca Baggi",
+      "author_email": "57922983+baggiponte@users.noreply.github.com",
+      "author_github_handle": "baggiponte",
+      "repo_name": "makemore",
+      "__repo_name": "makemore",
+      "package_name": "makemore",
+      "package_description": "Generate more of the same stuff",
+      "package_emoji": "♻️",
+      "requires_python": "3.10",
+      "__author_name": "Luca Baggi",
+      "__package_description": "Generate more of the same stuff",
+      "__package_emoji": "♻️ ",
+      "_template": "git@github.com:baggiponte/chef"
+    }
+  },
+  "directory": null
+}
