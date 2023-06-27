@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import requests
@@ -12,7 +13,6 @@ from makemore.utils import STRING_TO_INT
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
-    from pathlib import Path
 
 
 class NamesDataset(Dataset):
