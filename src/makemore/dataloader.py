@@ -4,15 +4,19 @@ from __future__ import annotations
 
 import random
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, overload
 
 import requests
+import torch
 from torch.utils.data import Dataset
 
 from makemore.utils import STRING_TO_INT
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
+    from typing import Literal
+
+    from torch import Tensor
 
 
 class NamesDataset(Dataset):
@@ -60,12 +64,30 @@ class NamesDataset(Dataset):
 
         yield from names
 
+    @overload
     def get_ngrams(
-        self, context_size: int = 3
+        self,
+        context_size: int,
+        as_tensor: Literal[False],  # noqa: FBT001, FBT002
     ) -> tuple[list[tuple[int, ...]], list[int]]:
+        ...
+
+    @overload
+    def get_ngrams(
+        self,
+        context_size: int,
+        as_tensor: Literal[True],  # noqa: FBT001, FBT002
+    ) -> tuple[Tensor, Tensor]:
+        ...
+
+    def get_ngrams(
+        self,
+        context_size: int = 3,
+        as_tensor: bool = False,  # noqa: FBT001, FBT002
+    ) -> tuple[list[tuple[int, ...]], list[int]] | tuple[Tensor, Tensor]:
         """Yield all ngrams."""
-        inputs = []
-        labels = []
+        inputs: list[tuple[int, ...]] = []
+        labels: list[int] = []
 
         for name in self.data:
             context = [0] * context_size
@@ -75,6 +97,8 @@ class NamesDataset(Dataset):
                 inputs.append(tuple(context))
                 labels.append(index)
 
+        if as_tensor:
+            return torch.tensor(inputs), torch.tensor(labels)
         return inputs, labels
 
     def __getitem__(self, index: int) -> str:
