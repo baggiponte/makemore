@@ -95,7 +95,7 @@ ignore = ["D107", "E501", "TRY003"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.0"
+version = "0.0.0"
 version_files = ["src/makemore/__init__.py:^__version__"]
 annotated_tag = true
 incremental = true
