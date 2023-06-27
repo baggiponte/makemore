@@ -9,7 +9,6 @@ from typing import TYPE_CHECKING
 import requests
 from torch.utils.data import Dataset
 
-import makemore.data
 from makemore.utils import STRING_TO_INT
 
 if TYPE_CHECKING:
@@ -39,8 +38,10 @@ class NamesDataset(Dataset):
 
     def _load_data(self) -> Iterable[str]:
         """Loads raw data."""
-        datadir: Traversable = resources.files(makemore.data).joinpath(
-            self.url.rpartition("/")[-1]
+        datadir: Traversable = (
+            resources.files(__package__)
+            .joinpath("data")
+            .joinpath(self.url.rpartition("/")[-1])
         )
 
         names: Iterable[str]
