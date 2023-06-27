@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 
+import random
 from importlib import resources
 from typing import TYPE_CHECKING
 
 import requests
-from more_itertools import nth
 from torch.utils.data import Dataset
 
 import makemore.data
-from makemore.types import STRING_TO_INT, ModelInput
+from makemore.utils import STRING_TO_INT
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -22,12 +22,22 @@ class NamesDataset(Dataset):
 
     NAMES_URL = "https://raw.githubusercontent.com/karpathy/makemore/master/names.txt"
 
-    def __init__(self, url: str | None = None, context_size: int = 3) -> None:
+    def __init__(
+        self,
+        url: str | None = None,
+        shuffle: bool = False,  # noqa: FBT001, FBT002
+        seed: int | None = None,
+    ) -> None:
         self.url: str = url or self.NAMES_URL
-        self.size: int = context_size
+        self.data: list[str] = sorted(set(self._load_data()))
 
-    @property
-    def data(self) -> Iterable[str]:
+        if shuffle and seed is not None:
+            random.seed(seed)
+            random.shuffle(self.data)
+        elif shuffle:
+            random.shuffle(self.data)
+
+    def _load_data(self) -> Iterable[str]:
         """Loads raw data."""
         datadir: Traversable = resources.files(makemore.data).joinpath(
             self.url.rpartition("/")[-1]
@@ -51,22 +61,27 @@ class NamesDataset(Dataset):
 
         yield from names
 
-    @property
-    def ngrams(self) -> Iterable[ModelInput]:
+    def get_ngrams(
+        self, context_size: int = 3
+    ) -> tuple[list[tuple[int, ...]], list[int]]:
         """Yield all ngrams."""
+        inputs = []
+        labels = []
+
         for name in self.data:
-            context = [0] * self.size
+            context = [0] * context_size
             for char in name + ".":
                 index = STRING_TO_INT[char]
                 context = context[1:] + [index]
+                inputs.append(tuple(context))
+                labels.append(index)
 
-                yield ModelInput(context, index)
+        return inputs, labels
 
-    def __getitem__(self, index: int) -> ModelInput:
+    def __getitem__(self, index: int) -> str:
         """Loads nth ngram."""
-        result = nth(self.ngrams, index)
+        return self.data[index]
 
-        if result is None:
-            raise IndexError(f"Index {index} out of range")
-
-        return result
+    def __len__(self) -> int:
+        """Returns number of ngrams."""
+        return len(self.data)
