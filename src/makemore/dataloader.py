@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import random
-from importlib import resources
 from typing import TYPE_CHECKING
 
 import requests
@@ -13,7 +12,7 @@ from makemore.utils import STRING_TO_INT
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
-    from importlib.abc import Traversable
+    from pathlib import Path
 
 
 class NamesDataset(Dataset):
@@ -38,16 +37,15 @@ class NamesDataset(Dataset):
 
     def _load_data(self) -> Iterable[str]:
         """Loads raw data."""
-        datadir: Traversable = (
-            resources.files(__package__)
-            .joinpath("data")
-            .joinpath(self.url.rpartition("/")[-1])
-        )
+        datadir: Path = Path(__package__).joinpath("data")
+        datadir.mkdir(exist_ok=True)
+
+        datapath: Path = datadir.joinpath(self.url.rpartition("/")[-1])
 
         names: Iterable[str]
 
         try:
-            names = (line.lower().strip() for line in datadir.open("rt"))
+            names = (line.lower().strip() for line in datapath.open("rt"))
         except FileNotFoundError:
             with (
                 requests.get(self.url, stream=True, timeout=30) as response,
