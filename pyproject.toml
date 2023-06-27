@@ -124,6 +124,9 @@ warn_unused_ignores = true
 testpaths = "tests"
 pythonpath = "src"
 
+[tool.deptry.per_rule_ignores]
+DEP002 = ["numpy"]
+
 [tool.pyright]
 exclude = [ ".venv" ]
 venvPath = "."
