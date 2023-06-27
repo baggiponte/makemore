@@ -37,7 +37,7 @@ class NamesDataset(Dataset):
 
     def _load_data(self) -> Iterable[str]:
         """Loads raw data."""
-        datadir: Path = Path(__package__).joinpath("data")
+        datadir: Path = Path(__package__).parent.absolute().joinpath("data")
         datadir.mkdir(exist_ok=True)
 
         datapath: Path = datadir.joinpath(self.url.rpartition("/")[-1])
