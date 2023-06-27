@@ -1,3 +1,9 @@
+## 0.1.6 (2023-06-28)
+
+### 🛠  Refactor
+
+- **dataloader**: add function overloads
+
 ## 0.1.5 (2023-06-28)
 
 ### 🐞 Fix
