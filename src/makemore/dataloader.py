@@ -49,7 +49,7 @@ class NamesDataset(Dataset):
         except FileNotFoundError:
             with (
                 requests.get(self.url, stream=True, timeout=30) as response,
-                datadir.open("wb") as file,
+                datapath.open("wb") as file,
             ):
                 response.raise_for_status()
 
