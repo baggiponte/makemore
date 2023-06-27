@@ -13,42 +13,43 @@ repos:
       - id: check-toml
       - id: check-json
       - id: check-added-large-files
-        args: [--maxkb=5120]
+        args: [ --maxkb=5120 ]
   - repo: local
     hooks:
       - id: black
         name: black
         entry: pdm run black
         language: system
-        types: [python]
+        types: [ python ]
       - id: blacken-docs
         name: blacken-docs
         entry: pdm run blacken-docs
         language: system
-        types: [python, tex, markdown, rst]
+        types: [ python, tex, markdown, rst ]
         files: '^(src/|docs/|tests/)'
       - id: ruff
         name: ruff (isort)
         alias: isort
         entry: pdm run ruff
-        args: [--select=I001, --fix]
+        args: [ --select=I001, --fix ]
         language: system
-        types: [python]
+        types: [ python ]
       - id: ruff
         name: ruff
         entry: pdm run ruff
         language: system
-        types: [python]
+        types: [ python ]
       - id: mypy
         name: mypy
         entry: pdm run mypy
         language: system
-        types: [python]
+        types: [ python ]
         files: '^(src/|docs/|tests/)'
       - id: commitizen
         name: commitizen
         entry: pdm run cz check
-        args: [--rev-range, origin/HEAD..HEAD]
+        args: [ --rev-range, origin/HEAD..HEAD ]
+        pass_filenames: false
         language: system
-        types: [python]
-        stages: [push]
+        types: [ python ]
+        stages: [ push ]
