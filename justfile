@@ -68,3 +68,7 @@ release: pre-release
 
 # Release a new version
 alias bump := release
+
+# Install jupyter kernel
+@kernel:
+  pdm run python -m ipykernel install --user --name ai-makemore --display-name "AI School - Makemore"
