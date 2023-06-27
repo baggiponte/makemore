@@ -56,7 +56,7 @@ class NamesDataset(Dataset):
                 for chunk in response.iter_content(chunk_size=8192):
                     file.write(chunk)
 
-            names = (line.lower().strip() for line in datadir.open("rt"))
+            names = (line.lower().strip() for line in datapath.open("rt"))
 
         yield from names
 
