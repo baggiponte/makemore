@@ -2,7 +2,7 @@
 name = "makemore"
 description = "♻️ Generate more of the same stuff"
 authors = [
-    {name = "Luca Baggi", email = "<57922983+baggiponte@users.noreply.github.com>"},
+    {name = "Luca Baggi", email = "57922983+baggiponte@users.noreply.github.com"},
 ]
 dynamic = ["version"]
 readme = "README.md"
