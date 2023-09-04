@@ -7,19 +7,13 @@ help:
 
 # Create a git repo if not exists, install dependencies and pre-commit hooks
 install:
-  #!/usr/bin/env zsh
-  set -euo pipefail
+  @{{just_executable()}} needs pdm
 
-  {{just_executable()}} needs pdm
-
-  pdm install --dev
+  pdm install --dev --group=:all
   pdm run pre-commit install --install-hooks
 
 # Configure git repo, GitHub and GitHub Actions
-config:
-  #!/usr/bin/env zsh
-  set -euo pipefail
-  
+@config:
   {{just_executable()}} needs gh grep
   {{just_executable()}} check-repository pypi
   {{just_executable()}} ensure-repo
@@ -35,9 +29,14 @@ config:
 # Install dependencies and configure CI/CD with Github Actions
 init: install config
 
+# Lock dependencies
+@lock:
+  {{just_executable()}} needs pdm
+
+  pdm lock --dev --group=:all
+
 # Update dependencies and update pre-commit hooks
-update:
-  pdm sync
+update: lock
   pdm update
   pdm run pre-commit install-hooks
   pdm run pre-commit autoupdate
