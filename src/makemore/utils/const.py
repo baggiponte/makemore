@@ -4,6 +4,21 @@ from __future__ import annotations
 
 from string import ascii_lowercase
 
-VOCABULARY: str = "." + ascii_lowercase
-INT_TO_STRING: dict[int, str] = dict(enumerate(VOCABULARY))
-STRING_TO_INT: dict[str, int] = {v: k for k, v in INT_TO_STRING.items()}
+from makemore.utils.types import AlphabetCharacter, AlphabetIndex
+
+CHARACTER_TO_INDEX: dict[AlphabetCharacter, AlphabetIndex] = {
+    AlphabetCharacter(v): AlphabetIndex(k) for k, v in enumerate("." + ascii_lowercase)
+}
+INDEX_TO_CHARACTER: dict[AlphabetIndex, AlphabetCharacter] = {
+    AlphabetIndex(k): AlphabetCharacter(v) for k, v in enumerate("." + ascii_lowercase)
+}
+
+
+def character_to_int(character: AlphabetCharacter) -> AlphabetIndex:
+    """Convert a character to an integer."""
+    return AlphabetIndex(CHARACTER_TO_INDEX[character])
+
+
+def int_to_character(index: AlphabetIndex) -> AlphabetCharacter:
+    """Convert an integer to a character."""
+    return AlphabetCharacter(INDEX_TO_CHARACTER[index])
