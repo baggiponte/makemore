@@ -28,7 +28,9 @@ pdm add makemore
 
 ## 🏫 Tutorials
 
-* [Multilayer Perceptron](./notebooks/mlp.ipynb): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/makemore/blob/main/notebooks/mlp.ipynb)
+* [Fundamentals of Python](./notebooks/00-intro-to-python.ipynb): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/makemore/blob/main/notebooks/00-intro-to-python.ipynb)
+* [A data processing example](./notebooks/01-data-processing.ipynb): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/makemore/blob/main/notebooks/01-data-processing.ipynb)
+* [Multilayer Perceptron](./notebooks/02-mlp.ipynb): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/makemore/blob/main/notebooks/02-mlp.ipynb)
 
 ## 🤗 Contributing
 
