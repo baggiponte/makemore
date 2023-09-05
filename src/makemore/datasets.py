@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, overload
 import torch
 from torch.utils.data import Dataset
 
-from makemore.utils import STRING_TO_INT, Context, Index
+from makemore.utils import AlphabetCharacter, AlphabetIndex, character_to_int
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -94,7 +94,7 @@ class NamesDataset(Dataset):
         self,
         context_size: int,
         as_tensor: Literal[False],  # noqa: FBT001, FBT002
-    ) -> tuple[list[Context], list[Index]]:
+    ) -> tuple[list[tuple[AlphabetIndex, ...]], list[AlphabetIndex]]:
         ...
 
     @overload
@@ -109,17 +109,20 @@ class NamesDataset(Dataset):
         self,
         context_size: int = 3,
         as_tensor: bool = False,  # noqa: FBT001, FBT002
-    ) -> tuple[list[Context], list[Index]] | tuple[Tensor, Tensor]:
+    ) -> (
+        tuple[list[tuple[AlphabetIndex, ...]], list[AlphabetIndex]]
+        | tuple[Tensor, Tensor]
+    ):
         """Yield all ngrams."""
-        inputs: list[Context] = []
-        labels: list[Index] = []
+        inputs: list[tuple[AlphabetIndex, ...]] = []
+        labels: list[AlphabetIndex] = []
 
         for name in self.data:
-            context: list[int] = [0] * context_size
+            context: list[AlphabetIndex] = [AlphabetIndex(0)] * context_size
             for char in name + ".":
-                index: int = STRING_TO_INT[char]
-                inputs.append(Context(tuple(context)))
-                labels.append(Index(index))
+                index: AlphabetIndex = character_to_int(AlphabetCharacter(char))
+                inputs.append(tuple(context))
+                labels.append(index)
                 context = context[1:] + [index]
 
         if as_tensor:

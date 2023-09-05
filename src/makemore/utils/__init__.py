@@ -1,4 +1,4 @@
 """Utilities."""
 
-from makemore.utils.const import INT_TO_STRING, STRING_TO_INT, VOCABULARY
-from makemore.utils.types import Context, Index
+from makemore.utils.const import character_to_int, int_to_character
+from makemore.utils.types import AlphabetCharacter, AlphabetIndex, Context

@@ -3,5 +3,6 @@ from __future__ import annotations
 
 from typing import NewType
 
-Context = NewType("Context", tuple[int, ...])
-Index = NewType("Index", int)
+AlphabetIndex = NewType("AlphabetIndex", int)
+AlphabetCharacter = NewType("AlphabetCharacter", str)
+Context = NewType("Context", tuple[AlphabetIndex, ...])
