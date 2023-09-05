@@ -6,11 +6,12 @@ authors = [
 ]
 dynamic = ["version"]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = [
     "torch>=2.0.1",
     "numpy>=1.22.0",
     "requests>=2.27.0",
+    "typing-extensions>=4.7.1 ; python_version < '3.11'",
 ]
 
 [tool.pdm.dev-dependencies]
@@ -39,7 +40,7 @@ release = [
     "commitizen>=2.42.0",
 ]
 ide = [
-    "ipykernel>=6.23.3",
+    "jupyterlab>=4.0.5",
 ]
 
 [tool.pdm.version]
@@ -53,7 +54,7 @@ source-includes = ["tests", "CHANGELOG.md", "README.md"]
 
 [tool.ruff]
 src = ["src"]
-target-version = "py310"
+target-version = "py39"
 line-length = 88
 
 select = [
