@@ -120,6 +120,10 @@ check-commits:
 @preview-bump:
   pdm run cz bump --dry-run
 
+# Launch a jupyter instance
+@lab:
+  pdm run jupyter lab
+
 # Assert a command is available
 [private]
 needs *commands:
