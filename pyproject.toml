@@ -14,10 +14,6 @@ dependencies = [
     "typing-extensions>=4.7.1 ; python_version < '3.11'",
 ]
 
-[project.optional-dependencies]
-tutorials = [
-    "matplotlib>=3.7.2",
-]
 [tool.pdm.dev-dependencies]
 precommit = [
     "pre-commit>=2.20.0",
@@ -46,6 +42,7 @@ release = [
 ide = [
     "jupyterlab>=4.0.5",
     "nbstripout>=0.6.1",
+    "matplotlib>=3.7.2",
 ]
 
 [tool.pdm.version]
