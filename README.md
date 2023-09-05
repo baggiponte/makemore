@@ -26,11 +26,9 @@
 pdm add makemore
 ```
 
-## 💻 Example Usage
+## 🏫 Tutorials
 
-## 📚 Code Guidelines and Project Layout
-
-Please check the documentation.
+* [Multilayer Perceptron](./notebooks/mlp.ipynb): [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/baggiponte/makemore/blob/main/notebooks/mlp.ipynb)
 
 ## 🤗 Contributing
 
@@ -69,31 +67,5 @@ pipx install pdm
 The recommended approach is to use [`just`](https://github.com/casey/just). Install `just` with your favourite package manager, then run the following:
 
 ```
-just setup
+just install
 ```
-
-Alternatively, run the following:
-
-```bash
-pdm install --dev
-pdm run pre-commit install --install-hooks
-```
-
-### Before submitting a PR
-
-Run the following:
-
-```
-just pre-release
-just test
-```
-
-The following operations will be performed:
-
-1. Format with `black` and `isort`.
-2. Lint with `ruff`.
-3. Run type checks with `mypy`.
-4. Audit dependencies with `pip-audit`.
-5. Check commit messages are consistent with Conventional Commits using `commitizen`.
-6. Check whether a version bump is possible.
-7. Run all tests.
