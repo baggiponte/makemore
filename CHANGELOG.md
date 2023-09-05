@@ -1,3 +1,9 @@
+## 0.1.7 (2023-09-05)
+
+### 🛠  Refactor
+
+- **makemore**: use clsmethods for NamesDataset
+
 ## 0.1.6 (2023-06-28)
 
 ### 🛠  Refactor
