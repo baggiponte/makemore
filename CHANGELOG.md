@@ -1,3 +1,9 @@
+## 0.1.8 (2023-09-06)
+
+### 🛠  Refactor
+
+- **makemore**: more custom character types
+
 ## 0.1.7 (2023-09-05)
 
 ### 🛠  Refactor
