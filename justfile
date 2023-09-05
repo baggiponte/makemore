@@ -108,16 +108,6 @@ release: sanitise audit bump
   git push
   git push --tag
 
-# Publish the package to GemFury
-@test-publish:
-  {{just_executable()}} check-repository testpypi
-  pdm publish --repository=testpypi
-
-# Publish the package to GemFury
-@publish:
-  {{just_executable()}} check-repository pypi
-  pdm publish --repository=pypi
-
 # Run all tests
 test:
   pdm run pytest --cov=src/makemore --cov-report=term-missing --cov-report=html
